@@ -1,9 +1,8 @@
-
 import os
 from datetime import date
 import csv
 
-# Sample picks (replace with model output logic)
+# Simulated MLB model picks – replace this with your real model output
 picks = [
     {
         'matchup': 'Dodgers at Yankees',
@@ -23,14 +22,20 @@ picks = [
     }
 ]
 
-# Output filename
+# Generate filename for today's date
 today = date.today().strftime('%Y-%m-%d')
 filename = f"mlb_picks_{today}.csv"
 
-# Write to CSV
+# Write picks to CSV
 with open(filename, 'w', newline='') as f:
     writer = csv.DictWriter(f, fieldnames=picks[0].keys())
     writer.writeheader()
     writer.writerows(picks)
 
+# Print confirmation
 print(f"MLB picks written to {filename}")
+
+# Print file contents for Render log viewing
+with open(filename, 'r') as f:
+    print("CSV Contents:")
+    print(f.read())
